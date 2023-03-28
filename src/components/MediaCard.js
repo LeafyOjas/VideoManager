@@ -6,11 +6,19 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {deleteVideo} from '../util'
-export default function MediaCard({video}) {
+import VideosContext from '../context/VideosContext'
 
+export default function MediaCard({video}) {
+  const {setvideosData,videosData}=React.useContext(VideosContext)
   const handleDelete=(id)=>{
-    
-      deleteVideo({id:id})
+      try{
+        deleteVideo(id)
+        const newVideos=videosData.filter((video)=>video.id!==id)
+        setvideosData([...newVideos])
+      }
+      catch(e){
+        console.log(e.message);
+      }
   }
   return (
     <Card sx={{ maxWidth: 345 }}>

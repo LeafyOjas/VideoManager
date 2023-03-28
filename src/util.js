@@ -23,10 +23,11 @@ export const deleteVideo= async (videoID)=>{
             "Content-Type": "application/json",
           },
     }
-    const data=fetch(url+videoID.toString(),options).then((res)=>res.json()).then((data)=>{
-    console.log("success",data)
+    const data=fetch(url+`/${videoID}`,options).then((res)=>res.json()).then((data)=>{
+    console.log("delete success",data)
     return data
 })
 
     return data
 }
+

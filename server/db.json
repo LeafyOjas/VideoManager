@@ -13,22 +13,10 @@
       "category": "education"
     },
     {
-      "id": 3,
-      "name": "video 3",
-      "link": "",
-      "category": "entertainment"
-    },
-    {
       "id": 4,
       "name": "video 4",
       "link": "",
       "category": "sports"
-    },
-    {
-      "id": 5,
-      "name": "video 5",
-      "link": "",
-      "category": "entertainment"
     },
     {
       "id": 6,
