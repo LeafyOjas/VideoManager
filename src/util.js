@@ -31,3 +31,19 @@ export const deleteVideo= async (videoID)=>{
     return data
 }
 
+export const UpdateVideo= async (videoDetails)=>{
+    const options={
+        method:"PUT",
+        headers: {
+            "Content-Type": "application/json",
+          },
+          body:JSON.stringify(videoDetails)
+    }
+    const data=fetch(url+`/${videoDetails.id}`,options).then((res)=>res.json()).then((data)=>{
+    console.log("update success",data)
+    return data
+})
+
+    return data
+}
+
