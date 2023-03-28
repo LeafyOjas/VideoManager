@@ -1,15 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext,useState } from 'react'
 import { useParams } from 'react-router'
 import VideosContext from '../context/VideosContext'
+import DeleteManyContext from '../context/DeleteManyContext'
 import MediaCard from './MediaCard'
 import { Grid } from '@mui/material'
+import FloatingCreateButton from './FloatingCreateButton';
+
 export const Videos = () => {
   const {category}=useParams()
   const {videosData}=useContext(VideosContext)
   const categoryData= videosData.filter((video)=>video.category===category)
+  const [deleteMany,setDeleteMany]=useState(false)
+  const [deleteManyID,setDeleteManyID]=useState([])
   return (
-    
-    <div className='videos-display'>
+    <DeleteManyContext.Provider value={{deleteMany,setDeleteMany,deleteManyID,setDeleteManyID}}>
+       <div className='videos-display'>
       <h1>{category.toUpperCase()} VIDEOS</h1>
       <Grid container spacing={4}>
       {
@@ -20,7 +25,9 @@ export const Videos = () => {
        )
       }
       </Grid>
-     
+      <FloatingCreateButton/>
     </div>
+    </DeleteManyContext.Provider>
+   
   )
 }

@@ -4,7 +4,6 @@ import Navbar from './Navbar';
 import VideosContext from '../context/VideosContext'
 import { url } from '../util'
 import { Outlet } from 'react-router';
-import FloatingCreateButton from './FloatingCreateButton';
 export const Home = () => {
     const [videosData, setvideosData] = useState([])
     useEffect(() => {
@@ -19,7 +18,7 @@ export const Home = () => {
             </div>
             <div className='mt-70' >
                 <Outlet/>
-                <FloatingCreateButton/>
+
             </div>
                 
         </VideosContext.Provider>

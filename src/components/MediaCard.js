@@ -7,14 +7,26 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {deleteVideo} from '../util'
 import VideosContext from '../context/VideosContext'
-
+import DeleteManyContext from '../context/DeleteManyContext';
+import Checkbox from '@mui/material/Checkbox';
+import { useLocation } from 'react-router';
 export default function MediaCard({video}) {
   const {setvideosData,videosData}=React.useContext(VideosContext)
+  const {deleteMany,setDeleteManyID,deleteManyID}=React.useContext(DeleteManyContext)
+  const location=useLocation()
+  const handleCheck=(event,isChecked,value)=>{
+
+    if(isChecked) setDeleteManyID(prev=>[...prev,video.id])
+    else {
+      setDeleteManyID([...deleteManyID.filter((id)=>id!==video.id)])
+    }
+  }
   const handleDelete=(id)=>{
       try{
         deleteVideo(id)
         const newVideos=videosData.filter((video)=>video.id!==id)
         setvideosData([...newVideos])
+        alert('Deleted Successfully')
       }
       catch(e){
         console.log(e.message);
@@ -22,6 +34,7 @@ export default function MediaCard({video}) {
   }
   return (
     <Card sx={{ maxWidth: 345 }}>
+      {deleteMany && location.pathname.includes(video.category)?<Checkbox onChange={handleCheck} color="error"/>:null}
       <CardMedia
         sx={{ height: 140 }}
         component="iframe"
