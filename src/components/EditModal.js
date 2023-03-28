@@ -8,7 +8,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { UpdateVideo } from '../util';
 import VideosContext from '../context/VideosContext';
-import { PhotoSizeSelectLargeTwoTone } from '@mui/icons-material';
 export default function EditModal({open,setOpen,videoToEdit}) {
 
     const [videoDetails,setVideoDetails]=React.useState({...videoToEdit})

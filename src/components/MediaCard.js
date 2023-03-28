@@ -40,16 +40,15 @@ export default function MediaCard({video}) {
       <CardMedia
         sx={{ height: 140 }}
         component="iframe"
-        src="https://www.youtube.com/embed/sZbWLGQD0Wg"
-        title="green iguana"
+        src={video.link}
+        title={video.name}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {video.name.toUpperCase()}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+         Description
         </Typography>
       </CardContent>
       <CardActions>
